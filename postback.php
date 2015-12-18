@@ -1,8 +1,8 @@
 <?php
     $path = "./";
     require_once($path."functions.php");
-    require_once($path."smarty/Smarty.class.php");
     require_once($path."db/SQLiteManager.php");
+    require_once $path.'vendor/autoload.php';
 
     $db = SQLiteManager\SQLiteManager::getInstance();
 
@@ -11,7 +11,6 @@
     unset($_REQUEST["submit"]);
 
     if($mode == "addFeed") {
-        require_once($path."autoloader.php");
         $feed = new SimplePie();
         $feed->enable_cache(false);
         $feed->set_feed_url($_REQUEST["feed"]);
@@ -26,7 +25,6 @@
         $urls = explode("\n", $_REQUEST["feeds"]);
 
         foreach($urls as $url) {
-            require_once($path."autoloader.php");
             $feed = new SimplePie();
             $feed->enable_cache(false);
             $feed->set_feed_url($url);
@@ -42,7 +40,6 @@
         $urls = explode("\n", $_REQUEST["feeds"]);
 
         foreach($urls as $url) {
-            require_once($path."autoloader.php");
             $feed = new SimplePie();
             $feed->enable_cache(false);
             $feed->set_feed_url($url);

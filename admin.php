@@ -1,8 +1,8 @@
 <?php
     $path = "./";
     require_once($path."functions.php");
-    require_once($path."smarty/Smarty.class.php");
     require_once($path."db/SQLiteManager.php");
+    require_once $path.'vendor/autoload.php';
 
     $fields = ["title", "summary", "category", "contributor", "author", "content", "url"];
 
