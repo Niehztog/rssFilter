@@ -12,8 +12,13 @@ Feed Aggregation (BETA)
 * Useful for only getting major news events or filtering out duplicates across feeds
 * URL customizable filter level - easily tweak filter threshold
 
+Prerequisites
+-------------
+Install composer from https://getcomposer.org/
+
 Setup
 -----
+execute `composer install` in the project's root folder to download and install external dependencies
 Put all files in your web server's document directory.
 Navigate to admin.php. Here you can add new rss/atom feeds and set up regex filters for them.
 Once you've added a feed, you will be provided a URL for your filtered feed. Put this into your RSS reader of choice, and get on with your life.

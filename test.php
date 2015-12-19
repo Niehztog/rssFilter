@@ -2,7 +2,6 @@
     $path = "./";
     require_once $path.'vendor/autoload.php';
     require_once($path."functions.php");
-    require_once($path."db/SQLiteManager.php");
 
     $urls = ["http://www.nytimes.com/services/xml/rss/nyt/GlobalHome.xml", "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/world/rss.xml", "http://feeds.reuters.com/reuters/topNews"];
 

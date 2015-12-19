@@ -1,44 +1,14 @@
 <?php
-	namespace SQLiteManager;
+require_once 'pdo.php';
 
-    /*
-	 *	Copyright 2010 Bion Oren
-	 *
-	 *	Licensed under the Apache License, Version 2.0 (the "License");
-	 *	you may not use this file except in compliance with the License.
-	 *	You may obtain a copy of the License at
-	 *		http://www.apache.org/licenses/LICENSE-2.0
-	 *	Unless required by applicable law or agreed to in writing, software
-	 *	distributed under the License is distributed on an "AS IS" BASIS,
-	 *	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 *	See the License for the specific language governing permissions and
-	 *	limitations under the License.
-	 */
+$pdo->exec("CREATE TABLE IF NOT EXISTS feeds (ID INTEGER PRIMARY KEY,feed TEXT,maxItems INTEGER)");
+$pdo->exec("CREATE TABLE IF NOT EXISTS aggregateFeeds (ID INTEGER PRIMARY KEY,feeds TEXT)");
+$pdo->exec("CREATE TABLE IF NOT EXISTS filters (ID INTEGER PRIMARY KEY,feedID INTEGER DEFAULT '-1' REFERENCES feeds(ID) ON UPDATE CASCADE ON DELETE CASCADE,field TEXT,regex TEXT)");
+$pdo->exec("CREATE TABLE IF NOT EXISTS errorLog (ID INTEGER PRIMARY KEY,query TEXT,error TEXT,date INTEGER)");
 
-	$path = "../";
-    require_once("SQLiteManager.php");
 
-    $db = SQLiteManager::getInstance();
 
-	$fields = [];
-	$fields[] = new DBField("feed", DBField::STRING);
-	$fields[] = new DBField("maxItems", DBField::NUM, 0);
-	$db->createTable("feeds", $fields);
 
-	$fields = [];
-	$fields[] = new DBField("feeds", DBField::STRING);
-	$db->createTable("aggregateFeeds", $fields);
 
-	$fields = [];
-	$fields[] = new DBField("feedID", DBField::NUM, -1, "feeds", "ID");
-	$fields[] = new DBField("field", DBField::STRING);
-	$fields[] = new DBField("regex", DBField::STRING);
-	$db->createTable("filters", $fields);
 
-	//errorLog
-	$fields = [];
-	$fields[] = new DBField("query", DBField::STRING);
-	$fields[] = new DBField("error", DBField::STRING);
-	$fields[] = new DBField("date", DBField::NUM);
-	$db->createTable("errorLog", $fields);
-?>
+
