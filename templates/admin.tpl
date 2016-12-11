@@ -15,6 +15,11 @@
     {foreach $feeds as $feed}
         <hr>
         <a href="{$base_url}/index.php?id={$feed["ID"]}">{$feed["feed"]}</a>
+        <form method="post" action="postback.php" style="display: inline;">
+            <input type="hidden" name="mode" value="deleteFeed">
+            <input type="hidden" name="feedID" value="{$feed["ID"]}">
+            <input type="submit" name="submit" value="Delete">
+        </form>
         <form method="post" action="postback.php">
             <input type="hidden" name="mode" value="setMaxItems">
             <input type="hidden" name="feedID" value="{$feed["ID"]}">
