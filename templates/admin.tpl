@@ -79,8 +79,10 @@
             {/foreach}
         </table>
     {/foreach}
+    {if !empty($aggregates)}
     Aggregate Feeds
     <br>
+    {/if}
     {foreach $aggregates as $feed}
         <hr>
         <a href="{$base_url}/aggregate.php?id={$feed["ID"]}&threshold=75&minThreshold=true&grouping=1">{$feed["feeds"]|nl2br}</a>
